@@ -1,4 +1,4 @@
-package com.example.dailyassistant.ui.notifications;
+package com.example.dailyassistant.ui.news;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,26 +12,26 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.dailyassistant.R;
-import com.example.dailyassistant.databinding.FragmentNotificationsBinding;
+import com.example.dailyassistant.databinding.FragmentNewsBinding;
 
-public class NotificationsFragment extends Fragment {
 
-    private NotificationsViewModel notificationsViewModel;
-    private FragmentNotificationsBinding binding;
+public class NewsFragment extends Fragment {
+
+    private NewsViewModel newsViewModel;
+    private FragmentNewsBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                new ViewModelProvider(this).get(NotificationsViewModel.class);
+        newsViewModel =
+                new ViewModelProvider(this).get(NewsViewModel.class);
 
-        binding = FragmentNotificationsBinding.inflate(inflater, container, false);
+        binding = FragmentNewsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textNotifications;
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        final TextView textView = binding.textNews;
+        newsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
-            public void onChanged(@Nullable String s) {
+            public void onChanged(@Nullable String s) {//put news here
                 textView.setText(s);
             }
         });

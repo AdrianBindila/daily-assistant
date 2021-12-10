@@ -1,4 +1,4 @@
-package com.example.dailyassistant.ui.home;
+package com.example.dailyassistant.ui.weather;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,24 +12,23 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.dailyassistant.R;
-import com.example.dailyassistant.databinding.FragmentHomeBinding;
+import com.example.dailyassistant.databinding.FragmentWeatherBinding;
 
-public class HomeFragment extends Fragment {
+public class WeatherFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
-    private FragmentHomeBinding binding;
+    private WeatherViewModel weatherViewModel;
+    private FragmentWeatherBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        weatherViewModel =
+                new ViewModelProvider(this).get(WeatherViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentWeatherBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        final TextView textView = binding.textWeather;
+        weatherViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

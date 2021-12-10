@@ -1,16 +1,16 @@
-package com.example.dailyassistant.ui.notifications;
+package com.example.dailyassistant.ui.weather;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class NotificationsViewModel extends ViewModel {
+public class WeatherViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public NotificationsViewModel() {
+    public WeatherViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is notifications fragment");
+        mText.setValue("This is Weather fragment");
     }
 
     public LiveData<String> getText() {
