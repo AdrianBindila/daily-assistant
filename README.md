@@ -5,3 +5,4 @@ News:
 https://newsapi.org/
 
 To-do:
+Check-list
