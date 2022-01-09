@@ -14,20 +14,27 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.dailyassistant.R;
 import com.example.dailyassistant.databinding.FragmentWeatherBinding;
+import com.example.dailyassistant.ui.news.NewsData;
 
 public class WeatherFragment extends Fragment {
     private WeatherViewModel weatherViewModel;
     private FragmentWeatherBinding binding;
-    private WeatherData weatherData;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        weatherData = new WeatherData();
-        System.out.println(weatherData.getDescription());
+        WeatherData weatherData = new WeatherData();
         weatherViewModel = new ViewModelProvider(this).get(WeatherViewModel.class);
         binding = FragmentWeatherBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         setWeatherData(weatherData);
+        Button button = root.findViewById(R.id.refresh_weather);
+        button.setOnClickListener(
+                view -> {
+                    WeatherData newWeatherData = new WeatherData();
+                    setWeatherData(newWeatherData);
+                }
+        );
         return root;
     }
 
@@ -44,6 +51,5 @@ public class WeatherFragment extends Fragment {
         textView.setText(weatherData.getDescription());
         imageView.setImageDrawable(weatherData.getWeatherImage());
         temp.setText(String.format("%d",weatherData.getTemperature())+" °C");
-        System.out.println(weatherData.getTemperature());
     }
 }

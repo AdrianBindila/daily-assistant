@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         tools:src="@tools:sample/backgrounds/scenic"
         android:layout_weight="1"
-        android:contentDescription="@string/weather_status" />
+        android:contentDescription="@string/news_status" />
     <TextView
         android:id="@+id/text_weather"
         android:layout_width="match_parent"

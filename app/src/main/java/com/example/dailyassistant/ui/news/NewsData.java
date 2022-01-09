@@ -29,29 +29,23 @@ public class NewsData {
     public NewsData() {
         Request request = new Request.Builder().url(GETURL).build();
         Call call = client.newCall(request);
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                System.out.println("failed call enqueue");
+        try (Response response = client.newCall(request).execute()) {
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+            try {
+                JSONObject reader = new JSONObject(response.body().string());
+                JSONObject latestArticle = reader.getJSONArray("articles").getJSONObject(0);
+                String title = latestArticle.getString("title");
+                String description = latestArticle.getString("description");
+                String imgURL = latestArticle.getString("urlToImage");
+                Drawable image = Drawable.createFromStream((InputStream) new URL(imgURL).getContent(), "news-image");
+                String articleURL = latestArticle.getString("url");
+                setData(title,description,image,articleURL);
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                try {
-                    JSONObject reader = new JSONObject(response.body().string());
-                    JSONObject latestArticle = reader.getJSONArray("articles").getJSONObject(0);
-                    String title = latestArticle.getString("title");
-                    String description = latestArticle.getString("description");
-                    String imgURL = latestArticle.getString("urlToImage");
-                    Drawable image = Drawable.createFromStream((InputStream) new URL(imgURL).getContent(), "news-image");
-                    String articleURL = latestArticle.getString("url");
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void setData(String title, String description, Drawable image, String url) {
