@@ -2,5 +2,6 @@
     <string name="app_name">Daily Assistant</string>
     <string name="title_weather">Weather</string>
     <string name="title_news">News</string>
-    <string name="title_todo">To-do</string>
+    <string name="refresh">Refresh</string>
+    <string name="weather_status">weather status</string>
 </resources>

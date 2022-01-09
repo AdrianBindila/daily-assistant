@@ -11,9 +11,4 @@
         android:icon="@drawable/ic_baseline_chrome_reader_mode_24"
         android:title="@string/title_news" />
 
-    <item
-        android:id="@+id/navigation_todo"
-        android:icon="@drawable/ic_baseline_check_24"
-        android:title="@string/title_todo" />
-
 </menu>

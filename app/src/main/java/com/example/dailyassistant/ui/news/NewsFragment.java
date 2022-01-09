@@ -16,7 +16,6 @@ import com.example.dailyassistant.databinding.FragmentNewsBinding;
 
 
 public class NewsFragment extends Fragment {
-
     private NewsViewModel newsViewModel;
     private FragmentNewsBinding binding;
 
