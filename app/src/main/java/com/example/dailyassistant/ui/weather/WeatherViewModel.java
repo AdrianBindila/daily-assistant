@@ -1,5 +1,6 @@
 package com.example.dailyassistant.ui.weather;
 
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.lifecycle.LiveData;
@@ -8,26 +9,15 @@ import androidx.lifecycle.ViewModel;
 
 public class WeatherViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
     private MutableLiveData<ImageView> mWeatherImage;
-    private WeatherData weatherData;
+    private MutableLiveData<String> mDescription;
+    private MutableLiveData<String> mTemp;
+    private Button mButton;
 
     public WeatherViewModel() {
-        weatherData = new WeatherData();
-        mText.setValue(weatherData.getDescription());
-        mText = new MutableLiveData<>();
+        mDescription = new MutableLiveData<>();
         mWeatherImage = new MutableLiveData<>();
-
-//        mWeatherImage.setValue(mWeatherImage.getValue());
+        mTemp = new MutableLiveData<>();
     }
 
-
-    public LiveData<String> getText() {
-
-        return mText;
-    }
-
-//    public LiveData<ImageView> getImage() {
-//        return mWeatherImage;
-//    }
 }

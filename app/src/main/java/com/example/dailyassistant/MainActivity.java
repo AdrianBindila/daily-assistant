@@ -1,6 +1,7 @@
 package com.example.dailyassistant;
 
 import android.os.Bundle;
+import android.os.StrictMode;
 
 import com.example.dailyassistant.ui.news.NewsData;
 import com.example.dailyassistant.ui.weather.WeatherData;
@@ -21,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

@@ -15,6 +15,7 @@ public class NewsViewModel extends ViewModel {
     }
 
     public LiveData<String> getText() {
+        mText.setValue(newsData.getTitle());
         return mText;
     }
 }

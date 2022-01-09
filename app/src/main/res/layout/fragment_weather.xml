@@ -7,13 +7,13 @@
     android:orientation="vertical"
     tools:context=".ui.weather.WeatherFragment">
 
-<!--    <ImageView-->
-<!--        android:id="@+id/image_weather"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        tools:src="@tools:sample/backgrounds/scenic"-->
-<!--        android:layout_weight="1"-->
-<!--        android:contentDescription="@string/weather_status" />-->
+    <ImageView
+        android:id="@+id/image_weather"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:src="@tools:sample/backgrounds/scenic"
+        android:layout_weight="1"
+        android:contentDescription="@string/weather_status" />
     <TextView
         android:id="@+id/text_weather"
         android:layout_width="match_parent"
@@ -29,11 +29,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textTemp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="40sp"
+        android:textAlignment="center"
+        android:text="@string/textTemp" />
+
     <Button
         android:id="@+id/refresh_weather"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="refreshData"
         android:text="@string/refresh"
         tools:layout_editor_absoluteX="155dp"
         tools:layout_editor_absoluteY="592dp" />

@@ -4,4 +4,5 @@
     <string name="title_news">News</string>
     <string name="refresh">Refresh</string>
     <string name="weather_status">weather status</string>
+    <string name="textTemp">0</string>
 </resources>

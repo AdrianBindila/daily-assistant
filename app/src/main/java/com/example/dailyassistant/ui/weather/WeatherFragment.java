@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,21 +21,13 @@ public class WeatherFragment extends Fragment {
     private FragmentWeatherBinding binding;
     private WeatherData weatherData;
 
-
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         weatherData = new WeatherData();
         System.out.println(weatherData.getDescription());
         weatherViewModel = new ViewModelProvider(this).get(WeatherViewModel.class);
         binding = FragmentWeatherBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        final TextView textView = binding.textWeather;
-        weatherViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                if (s!=null)
-                textView.setText(s);
-            }
-        });
+        setWeatherData(weatherData);
         return root;
     }
 
@@ -44,7 +37,13 @@ public class WeatherFragment extends Fragment {
         binding = null;
     }
 
-    public void refreshData(View view){
-
+    private void setWeatherData(WeatherData weatherData){
+        TextView textView = binding.textWeather;
+        ImageView imageView = binding.imageWeather;
+        TextView temp = binding.textTemp;
+        textView.setText(weatherData.getDescription());
+        imageView.setImageDrawable(weatherData.getWeatherImage());
+        temp.setText(String.format("%d",weatherData.getTemperature())+" °C");
+        System.out.println(weatherData.getTemperature());
     }
 }
